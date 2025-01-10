@@ -19,7 +19,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '9.x'
+          dotnet-version: "9.x"
           include-prerelease: true
 
       - name: Build with dotnet
@@ -38,7 +38,7 @@ jobs:
     runs-on: windows-latest
     needs: build
     environment:
-      name: 'Production'
+      name: "Production"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -51,7 +51,6 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'jjwfcore'
-          slot-name: 'Production'
+          app-name: "jjwfcore"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CC013A0AC3C74B7DB6325F2CEA3193E2 }}
           package: .
